@@ -1,0 +1,47 @@
+version: '3.8'
+name: odoo-accounting
+
+services:
+  db:
+    image: postgres:16
+    container_name: odoo-accounting-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: odooaccounting
+      POSTGRES_USER: odooaccounting
+      POSTGRES_PASSWORD: odooaccounting
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    networks:
+      - odoo-accounting-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odooaccounting -d odooaccounting"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  odoo:
+    image: localhost/odoo-accounting-custom:18.0
+    container_name: odoo-accounting-web
+    restart: unless-stopped
+    ports:
+      - "9092:8069"
+    environment:
+      HOST: db
+      PORT: 5432
+      USER: odooaccounting
+      PASSWORD: odooaccounting
+    volumes:
+      - ./addons:/mnt/extra-addons
+      - ./config/odoo.conf:/etc/odoo/odoo.conf
+      - ./data/odoo:/var/lib/odoo
+    networks:
+      - odoo-accounting-net
+    depends_on:
+      db:
+        condition: service_healthy
+
+networks:
+  odoo-accounting-net:
+    name: odoo-accounting-network
+    driver: bridge
