@@ -20,6 +20,7 @@
 #
 #############################################################################
 from datetime import date, timedelta
+from markupsafe import escape
 from odoo import api, fields, models, _
 import base64
 import io
@@ -201,49 +202,78 @@ class ResPartner(models.Model):
                  ('state', '=', 'posted')])
             rec.vendor_statement_ids = bills
 
-    def main_query(self):
-        """ Return select query """
-        query = """SELECT name , invoice_date, invoice_date_due,
-                       amount_total_signed AS sub_total,
-                       amount_residual_signed AS amount_due ,
-                       amount_residual AS balance
-               FROM account_move WHERE payment_state != 'paid'
-               AND state ='posted' AND partner_id= '%s'
-               AND company_id = '%s' """ % (self.id, self.env.company.id)
-        return query
+    def _get_statement_base_query(self):
+        """Return base query and params for partner statement (parameterized)."""
+        base_where = """FROM account_move WHERE payment_state != 'paid'
+               AND state = 'posted' AND partner_id = %s
+               AND company_id = %s"""
+        params = (self.id, self.env.company.id)
+        return base_where, params
 
-    def amount_query(self):
-        """ Return query for calculating total amount """
-        amount_query = """ SELECT SUM(amount_total_signed) AS total, 
+    def main_query(self, move_type_filter=None):
+        """Return select query and params (parameterized)."""
+        base_where, params = self._get_statement_base_query()
+        query = """SELECT name, invoice_date, invoice_date_due,
+                       amount_total_signed AS sub_total,
+                       amount_residual_signed AS amount_due,
+                       amount_residual AS balance
+               """ + base_where
+        if move_type_filter:
+            query += " AND move_type IN %s"
+            params = params + (tuple(move_type_filter),)
+        return query, params
+
+    def amount_query(self, move_type_filter=None):
+        """Return query and params for calculating total amount (parameterized)."""
+        base_where, params = self._get_statement_base_query()
+        query = """SELECT SUM(amount_total_signed) AS total,
                        SUM(amount_residual) AS balance
-                   FROM account_move WHERE payment_state != 'paid' 
-                   AND state ='posted' AND partner_id= '%s'
-                   AND company_id = '%s' """ % (self.id, self.env.company.id)
-        return amount_query
+               """ + base_where
+        if move_type_filter:
+            query += " AND move_type IN %s"
+            params = params + (tuple(move_type_filter),)
+        return query, params
+
+    def _build_statement_email_body(self):
+        """Build HTML-safe email body for statement reports."""
+        partner_name = escape(self.name or '')
+        user_name = escape(self.env.user.name or '')
+        return (
+            '<p>Dear <strong> Mr/Miss. %s</strong> </p>'
+            '<p> We have attached your payment statement. Please check </p>'
+            '<p>Best regards, </p> <p> %s</p>'
+        ) % (partner_name, user_name)
+
+    def _execute_statement_queries(self, move_types):
+        """Execute main and amount queries with given move_type filter."""
+        query, params = self.main_query(move_type_filter=move_types)
+        self.env.cr.execute(query, params)
+        main = self.env.cr.dictfetchall()
+        amt_query, amt_params = self.amount_query(move_type_filter=move_types)
+        self.env.cr.execute(amt_query, amt_params)
+        amount = self.env.cr.dictfetchall()
+        return main, amount
+
+    def _build_statement_data(self, main, amount):
+        """Build data dict for statement reports."""
+        return {
+            'customer': self.display_name,
+            'street': self.street,
+            'street2': self.street2,
+            'city': self.city,
+            'state': self.state_id.name,
+            'zip': self.zip,
+            'my_data': main,
+            'total': amount[0]['total'],
+            'balance': amount[0]['balance'],
+            'currency': self.currency_id.symbol,
+        }
 
     def action_share_pdf(self):
         """ Action for sharing customer pdf report """
         if self.customer_report_ids:
-            main_query = self.main_query()
-            main_query += """ AND move_type IN ('out_invoice')"""
-            amount = self.amount_query()
-            amount += """ AND move_type IN ('out_invoice')"""
-            self.env.cr.execute(main_query)
-            main = self.env.cr.dictfetchall()
-            self.env.cr.execute(amount)
-            amount = self.env.cr.dictfetchall()
-            data = {
-                'customer': self.display_name,
-                'street': self.street,
-                'street2': self.street2,
-                'city': self.city,
-                'state': self.state_id.name,
-                'zip': self.zip,
-                'my_data': main,
-                'total': amount[0]['total'],
-                'balance': amount[0]['balance'],
-                'currency': self.currency_id.symbol,
-            }
+            main, amount = self._execute_statement_queries(['out_invoice'])
+            data = self._build_statement_data(main, amount)
             report = self.env['ir.actions.report'].sudo()._render_qweb_pdf(
                 'base_accounting_kit.res_partner_action', self, data=data)
             data_record = base64.b64encode(report[0])
@@ -258,10 +288,7 @@ class ResPartner(models.Model):
             email_values = {
                 'email_to': self.email,
                 'subject': 'Payment Statement Report',
-                'body_html': '<p>Dear <strong> Mr/Miss. ' + self.name +
-                             '</strong> </p> <p> We have attached your '
-                             'payment statement. Please check </p> '
-                             '<p>Best regards, </p> <p> ' + self.env.user.name,
+                'body_html': self._build_statement_email_body(),
                 'attachment_ids': [attachment.id],
             }
             mail = self.env['mail.mail'].sudo().create(email_values)
@@ -281,26 +308,8 @@ class ResPartner(models.Model):
     def action_print_pdf(self):
         """ Action for printing pdf report """
         if self.customer_report_ids:
-            main_query = self.main_query()
-            main_query += """ AND move_type IN ('out_invoice')"""
-            amount = self.amount_query()
-            amount += """ AND move_type IN ('out_invoice')"""
-            self.env.cr.execute(main_query)
-            main = self.env.cr.dictfetchall()
-            self.env.cr.execute(amount)
-            amount = self.env.cr.dictfetchall()
-            data = {
-                'customer': self.display_name,
-                'street': self.street,
-                'street2': self.street2,
-                'city': self.city,
-                'state': self.state_id.name,
-                'zip': self.zip,
-                'my_data': main,
-                'total': amount[0]['total'],
-                'balance': amount[0]['balance'],
-                'currency': self.currency_id.symbol,
-            }
+            main, amount = self._execute_statement_queries(['out_invoice'])
+            data = self._build_statement_data(main, amount)
             return self.env.ref('base_accounting_kit.res_partner_action'
                                 ).report_action(self, data=data)
         else:
@@ -309,26 +318,8 @@ class ResPartner(models.Model):
     def action_print_xlsx(self):
         """ Action for printing xlsx report of customers """
         if self.customer_report_ids:
-            main_query = self.main_query()
-            main_query += """ AND move_type IN ('out_invoice')"""
-            amount = self.amount_query()
-            amount += """ AND move_type IN ('out_invoice')"""
-            self.env.cr.execute(main_query)
-            main = self.env.cr.dictfetchall()
-            self.env.cr.execute(amount)
-            amount = self.env.cr.dictfetchall()
-            data = {
-                'customer': self.display_name,
-                'street': self.street,
-                'street2': self.street2,
-                'city': self.city,
-                'state': self.state_id.name,
-                'zip': self.zip,
-                'my_data': main,
-                'total': amount[0]['total'],
-                'balance': amount[0]['balance'],
-                'currency': self.currency_id.symbol,
-            }
+            main, amount = self._execute_statement_queries(['out_invoice'])
+            data = self._build_statement_data(main, amount)
             return {
                 'type': 'ir.actions.report',
                 'data': {
@@ -413,26 +404,8 @@ class ResPartner(models.Model):
     def action_share_xlsx(self):
         """ Action for sharing xlsx report via email """
         if self.customer_report_ids:
-            main_query = self.main_query()
-            main_query += """ AND move_type IN ('out_invoice')"""
-            amount = self.amount_query()
-            amount += """ AND move_type IN ('out_invoice')"""
-            self.env.cr.execute(main_query)
-            main = self.env.cr.dictfetchall()
-            self.env.cr.execute(amount)
-            amount = self.env.cr.dictfetchall()
-            data = {
-                'customer': self.display_name,
-                'street': self.street,
-                'street2': self.street2,
-                'city': self.city,
-                'state': self.state_id.name,
-                'zip': self.zip,
-                'my_data': main,
-                'total': amount[0]['total'],
-                'balance': amount[0]['balance'],
-                'currency': self.currency_id.symbol,
-            }
+            main, amount = self._execute_statement_queries(['out_invoice'])
+            data = self._build_statement_data(main, amount)
             output = io.BytesIO()
             workbook = xlsxwriter.Workbook(output, {'in_memory': True})
             sheet = workbook.add_worksheet()
@@ -506,10 +479,7 @@ class ResPartner(models.Model):
             email_values = {
                 'email_to': self.email,
                 'subject': 'Payment Statement Report',
-                'body_html': '<p>Dear <strong> Mr/Miss. ' + self.name +
-                             '</strong> </p> <p> We have attached your'
-                             ' payment statement. Please check </p> '
-                             '<p>Best regards, </p> <p> ' + self.env.user.name,
+                'body_html': self._build_statement_email_body(),
                 'attachment_ids': [attachment.id],
             }
             mail = self.env['mail.mail'].sudo().create(email_values)

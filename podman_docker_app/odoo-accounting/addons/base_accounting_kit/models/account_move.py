@@ -49,8 +49,8 @@ class AccountMove(models.Model):
                 line.move_posted_check = False
         return super(AccountMove, self).button_cancel()
 
-    def post(self):
-        """Supering the post method to mapped the asset depreciation records"""
+    def action_post(self):
+        """Override action_post to map asset depreciation records."""
         self.mapped('asset_depreciation_ids').post_lines_and_close_asset()
         return super(AccountMove, self).action_post()
 

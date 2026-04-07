@@ -58,11 +58,8 @@ class MultipleInvoiceLayout(models.TransientModel):
         related='journal_id.text_align',
         readonly=False)
     preview = fields.Html(compute='_compute_preview',
-                          sanitize=False,
-                          sanitize_tags=False,
-                          sanitize_attributes=False,
+                          sanitize=True,
                           sanitize_style=False,
-                          sanitize_form=False,
                           strip_style=False,
                           strip_classes=False)
 

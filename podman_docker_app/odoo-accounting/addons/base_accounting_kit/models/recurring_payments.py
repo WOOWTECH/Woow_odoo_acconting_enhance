@@ -55,7 +55,7 @@ class RecurringPayments(models.Model):
     journal_id = fields.Many2one('account.journal', 'Journal', required=True)
     analytic_account_id = fields.Many2one('account.analytic.account',
                                           'Analytic Account')
-    date = fields.Date('Starting Date', required=True, default=date.today())
+    date = fields.Date('Starting Date', required=True, default=fields.Date.today)
     next_date = fields.Date('Next Schedule', compute=_get_next_schedule,
                             readonly=True, copy=False)
     recurring_period = fields.Selection(selection=[('days', 'Days'),
@@ -138,12 +138,10 @@ class RecurringPayments(models.Model):
                 'account_id': tmpl_id.credit_account.id,
                 'partner_id': tmpl_id.partner_id.id,
                 'credit': line.amount,
-                # 'analytic_account_id': tmpl_id.analytic_account_id.id,
             }), (0, 0, {
                 'account_id': tmpl_id.debit_account.id,
                 'partner_id': tmpl_id.partner_id.id,
                 'debit': line.amount,
-                # 'analytic_account_id': tmpl_id.analytic_account_id.id,
             })]
             vals = {
                 'date': line.date,
@@ -156,4 +154,4 @@ class RecurringPayments(models.Model):
             }
             move_id = self.env['account.move'].create(vals)
             if tmpl_id.journal_state == 'posted':
-                move_id.post()
+                move_id.action_post()

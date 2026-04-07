@@ -172,7 +172,7 @@ class AccountPayment(models.Model):
                 }
             }
         else:
-            self.filtered(lambda r: r.state == 'draft').post()
+            self.filtered(lambda r: r.state == 'draft').action_post()
             self.write({'state': 'sent'})
             return self.do_print_checks()
 

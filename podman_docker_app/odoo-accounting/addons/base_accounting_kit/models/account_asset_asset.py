@@ -285,7 +285,7 @@ class AccountAssetAsset(models.Model):
             day = depreciation_date.day
             month = depreciation_date.month
             year = depreciation_date.year
-            total_days = (year % 4) and 365 or 366
+            total_days = 366 if calendar.isleap(year) else 365
 
             undone_dotation_number = self._compute_board_undone_dotation_nb(
                 depreciation_date, total_days)

@@ -54,8 +54,8 @@ class ImportBankStatement(models.TransientModel):
                     file = base64.b64decode(self.attachment)
                     file_string = file.decode('utf-8')
                     file_string = file_string.split('\n')
-                except:
-                    raise ValidationError(_("Choose correct file"))
+                except (UnicodeDecodeError, ValueError, Exception) as e:
+                    raise ValidationError(_("Choose correct file")) from e
                 # Skipping the first line
                 firstline = True
                 for file_item in file_string:
@@ -126,8 +126,8 @@ class ImportBankStatement(models.TransientModel):
                     order = openpyxl.load_workbook(
                         filename=BytesIO(base64.b64decode(self.attachment)))
                     xl_order = order.active
-                except:
-                    raise ValidationError(_("Choose correct file"))
+                except (ValueError, KeyError, Exception) as e:
+                    raise ValidationError(_("Choose correct file")) from e
                 for record in xl_order.iter_rows(min_row=2, max_row=None,
                                                  min_col=None,
                                                  max_col=None,
@@ -200,8 +200,8 @@ class ImportBankStatement(models.TransientModel):
                 try:
                     with codecs.open(file_path) as fileobj:
                         ofx_file = OfxParser.parse(fileobj)
-                except:
-                    raise ValidationError(_("Wrong file format"))
+                except (IOError, ValueError, Exception) as e:
+                    raise ValidationError(_("Wrong file format")) from e
                 if not ofx_file.account:
                     raise ValidationError(
                         _("No account information found in OFX file."))
@@ -274,8 +274,8 @@ class ImportBankStatement(models.TransientModel):
                     parser = QifParser()
                     with open(file_path, 'r') as qiffile:
                         qif = parser.parse(qiffile)
-                except:
-                    raise ValidationError(_("Wrong file format"))
+                except (IOError, ValueError, Exception) as e:
+                    raise ValidationError(_("Wrong file format")) from e
                 file_string = str(qif)
                 file_item = file_string.split('^')
                 file_item[-1] = file_item[-1].rstrip('\n')

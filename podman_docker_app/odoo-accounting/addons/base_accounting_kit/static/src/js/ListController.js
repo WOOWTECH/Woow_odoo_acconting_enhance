@@ -2,8 +2,16 @@
 import { registry } from '@web/core/registry';
 import { ListController } from "@web/views/list/list_controller";
 import { listView } from "@web/views/list/list_view";
-import { useState, useRef } from "@odoo/owl";
-import { useListener, useService} from "@web/core/utils/hooks";
+import { useState } from "@odoo/owl";
+import { useService } from "@web/core/utils/hooks";
+import { escape as markupEscape } from "@web/core/utils/strings";
+
+function escapeHtml(str) {
+    if (typeof markupEscape === 'function') return markupEscape(str);
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(str || ''));
+    return div.innerHTML;
+}
 export class AccountMoveLineListController extends ListController {
      constructor() {
         super(...arguments);
@@ -60,10 +68,10 @@ export class AccountMoveLineListController extends ListController {
 
             // Check if partner_id exists and is not empty
             if (record.data.partner_id && record.data.partner_id[1]) {
-                partnerName = record.data.partner_id[1];
+                partnerName = escapeHtml(record.data.partner_id[1]);
             }
             if (record.data.move_id && record.data.move_id[1]) {
-                moveId = `<br/><span id="moveLine" style="font-size: 12px; font-style: italic;font-weight: normal;color: #01666b;cursor: pointer;" data-moveId="${record.data.move_id[0]}">${record.data.move_id[1]}</span>`;
+                moveId = `<br/><span id="moveLine" style="font-size: 12px; font-style: italic;font-weight: normal;color: #01666b;cursor: pointer;" data-moveId="${parseInt(record.data.move_id[0])}">${escapeHtml(record.data.move_id[1])}</span>`;
             }
 
 
@@ -76,8 +84,8 @@ export class AccountMoveLineListController extends ListController {
             const newRow = document.createElement('tr');
             newRow.setAttribute('data-resId', record.resId); // Set a unique identifier for the row
             if (debitColumn !== '') {
-                newRow.innerHTML = `<td style="font-weight: bold; display: table-cell; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top;">${record.data.account_id[1]}
-                                    ${moveId}<span style="font-size: 12px;font-style: italic;font-weight: normal;"> : ${record.data.name}</span></td>
+                newRow.innerHTML = `<td style="font-weight: bold; display: table-cell; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top;">${escapeHtml(record.data.account_id[1])}
+                                    ${moveId}<span style="font-size: 12px;font-style: italic;font-weight: normal;"> : ${escapeHtml(record.data.name)}</span></td>
                                     <td style="font-weight: bold; display: table-cell; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top;">${partnerName}</td>
                                     <td style="font-weight: bold; display: table-cell; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top;">${formattedDate}</td>
                                     ${debitColumn}
@@ -87,8 +95,8 @@ export class AccountMoveLineListController extends ListController {
                                     </td>`;
 
             } else if (creditColumn !== '') {
-                newRow.innerHTML = `<td style="font-weight: bold; display: table-cell; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top;">${record.data.account_id[1]}
-                                    ${moveId}<span style="font-size: 12px;font-style: italic;font-weight: normal;"> : ${record.data.name}</span></td>
+                newRow.innerHTML = `<td style="font-weight: bold; display: table-cell; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top;">${escapeHtml(record.data.account_id[1])}
+                                    ${moveId}<span style="font-size: 12px;font-style: italic;font-weight: normal;"> : ${escapeHtml(record.data.name)}</span></td>
                                     <td style="font-weight: bold; display: table-cell; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top;">${partnerName}</td>
                                     <td style="font-weight: bold; display: table-cell; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top;">${formattedDate}</td>
                                     <td style="font-weight: bold; display: table-cell; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top;"> </td>

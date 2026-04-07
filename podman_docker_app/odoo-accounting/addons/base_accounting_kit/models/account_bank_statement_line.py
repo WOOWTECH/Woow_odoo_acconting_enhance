@@ -20,7 +20,6 @@
 #
 #############################################################################
 from odoo import api, fields, models
-from odoo.http import request
 
 
 class AccountBankStatementLine(models.Model):
@@ -50,12 +49,11 @@ class AccountBankStatementLine(models.Model):
     @api.model
     def update_rowdata(self, record_id):
         """Update the 'rowdata' field for the specified record."""
-        request.session['record_id'] = record_id
+        pass
 
     @api.model
     def update_match_row_data(self, resId):
         """Update the match row data for a specific record identified by the given resId."""
-        request.session['resId'] = resId
         move_record = self.env['account.move.line'].browse(resId)
         move_record_values = {
             'id': move_record.id,

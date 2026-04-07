@@ -58,7 +58,7 @@ class AccountInvoiceLine(models.Model):
                         'The number of depreciations or the period length of '
                         'your asset category cannot be null.'))
                 months = cat.method_number * cat.method_period
-                if record.move_id in ['out_invoice', 'out_refund']:
+                if record.move_id.move_type in ['out_invoice', 'out_refund']:
                     record.asset_mrr = record.price_subtotal_signed / months
                 if record.move_id.invoice_date:
                     start_date = datetime.strptime(
@@ -92,7 +92,7 @@ class AccountInvoiceLine(models.Model):
                     asset.validate()
         return True
 
-    @api.depends('asset_category_id')
+    @api.onchange('asset_category_id')
     def onchange_asset_category_id(self):
         """On change function based on the category and its updates the
         account status"""
@@ -109,7 +109,7 @@ class AccountInvoiceLine(models.Model):
         self.onchange_asset_category_id()
         return result
 
-    @api.depends('product_id')
+    @api.onchange('product_id')
     def _onchange_product_id(self):
         """Onchange product values and it's associated with the move types"""
         vals = super(AccountInvoiceLine, self)._compute_price_unit()
@@ -124,9 +124,9 @@ class AccountInvoiceLine(models.Model):
         """The function adds additional fields that based on the invoice
         move types"""
         if not self.asset_category_id:
-            if invoice.type == 'out_invoice':
+            if invoice.move_type == 'out_invoice':
                 self.asset_category_id = self.product_id.product_tmpl_id.deferred_revenue_category_id.id
-            elif invoice.type == 'in_invoice':
+            elif invoice.move_type == 'in_invoice':
                 self.asset_category_id = self.product_id.product_tmpl_id.asset_category_id.id
             self.onchange_asset_category_id()
         super(AccountInvoiceLine, self)._set_additional_fields(invoice)
@@ -154,8 +154,14 @@ class AccountInvoiceLine(models.Model):
             domain += [(date_field, '<=', context['date_to'])]
         if context.get('date_from'):
             if not context.get('strict_range'):
+                # In Odoo 18, include_initial_balance was removed.
+                # Balance sheet accounts (non-P&L) carry initial balance.
+                # P&L account types: income, income_other, expense,
+                # expense_depreciation, expense_direct_cost
                 domain += ['|', (date_field, '>=', context['date_from']),
-                           ('account_id.include_initial_balance', '=', True)]
+                           ('account_id.account_type', 'not in', (
+                               'income', 'income_other', 'expense',
+                               'expense_depreciation', 'expense_direct_cost'))]
             elif context.get('initial_bal'):
                 domain += [(date_field, '<', context['date_from'])]
             else:
@@ -185,9 +191,6 @@ class AccountInvoiceLine(models.Model):
 
         if context.get('account_ids'):
             domain += [('account_id', 'in', context['account_ids'].ids)]
-
-        if context.get('analytic_tag_ids'):
-            domain += [('analytic_tag_ids', 'in', context['analytic_tag_ids'].ids)]
 
         if context.get('analytic_account_ids'):
             domain += [('analytic_account_id', 'in', context['analytic_account_ids'].ids)]

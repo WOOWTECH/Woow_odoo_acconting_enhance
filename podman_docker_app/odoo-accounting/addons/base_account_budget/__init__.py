@@ -23,8 +23,10 @@ from . import models
 
 
 def enable_analytic_accounting(env):
-    group = env.ref('analytic.group_analytic_accounting')
+    group = env.ref('analytic.group_analytic_accounting', raise_if_not_found=False)
     if group:
-        users = env['res.users'].search([('share', '=', False)])
-        for user in users:
-            user.write({'groups_id': [(4, group.id)]})
+        # Enable analytic accounting for accounting users via implied groups
+        # rather than modifying individual users
+        accounting_group = env.ref('account.group_account_user', raise_if_not_found=False)
+        if accounting_group and group.id not in accounting_group.implied_ids.ids:
+            accounting_group.write({'implied_ids': [(4, group.id)]})
