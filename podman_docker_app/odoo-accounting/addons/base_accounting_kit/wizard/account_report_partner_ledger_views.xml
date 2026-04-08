@@ -18,6 +18,7 @@
 <!--Action Account Report Partner Ledger-->
     <record id="action_partner_leadger" model="ir.actions.act_window">
         <field name="name">Partner Ledger</field>
+        <field name="path">partner-ledger</field>
         <field name="res_model">account.report.partner.ledger</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">form</field>

@@ -30,6 +30,7 @@
 <!--Action Account Bank Book Report-->
     <record id="action_account_bank_book_view" model="ir.actions.act_window">
         <field name="name">Bank Book Report</field>
+        <field name="path">bank-book</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">account.bank.book.report</field>
         <field name="view_id" ref="account_bank_book_report_view_form"/>

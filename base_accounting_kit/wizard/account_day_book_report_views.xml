@@ -27,6 +27,7 @@
 <!--Action Account Day Book Report-->
     <record id="action_account_day_book_view" model="ir.actions.act_window">
         <field name="name">Day Book Report</field>
+        <field name="path">day-book</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">account.day.book.report</field>
         <field name="view_id" ref="account_day_book_report_view_form"/>

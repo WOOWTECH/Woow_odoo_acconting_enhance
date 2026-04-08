@@ -66,6 +66,7 @@
 <!--  Action FollowUp  -->
     <record id="action_account_followup_definition_form" model="ir.actions.act_window">
         <field name="name">Payment Follow-ups</field>
+        <field name="path">payment-followups</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">account.followup</field>
         <field name="search_view_id" ref="account_followup_view_search"/>

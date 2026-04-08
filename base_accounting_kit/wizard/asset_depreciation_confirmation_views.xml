@@ -25,6 +25,7 @@
 <!--Action Asset Depreciation Confirmation-->
     <record id="action_asset_depreciation_confirmation_wizard" model="ir.actions.act_window">
         <field name="name">Post Depreciation Lines</field>
+        <field name="path">post-depreciation</field>
         <field name="res_model">asset.depreciation.confirmation</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="asset_depreciation_confirmation_view_form"/>

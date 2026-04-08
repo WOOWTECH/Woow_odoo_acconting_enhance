@@ -16,6 +16,7 @@
 <!--Action Account Print Journal-->
     <record id="action_account_print_journal_menu" model="ir.actions.act_window">
         <field name="name">Journals Audit</field>
+        <field name="path">journals-audit</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">account.print.journal</field>
         <field name="view_mode">form</field>

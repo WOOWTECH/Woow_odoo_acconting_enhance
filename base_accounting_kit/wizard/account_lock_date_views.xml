@@ -28,6 +28,7 @@
 <!--Action Account Lock Date-->
     <record model="ir.actions.act_window" id="account_update_lock_date_act_window">
         <field name="name">Lock your Fiscal Period</field>
+        <field name="path">lock-dates</field>
         <field name="res_model">account.lock.date</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>

@@ -24,6 +24,7 @@
             model="ir.actions.act_window">
         <!-- Binding removed since the same can be achieved with multi-edit -->
         <field name="name">Create Statement</field>
+        <field name="path">bank-statements</field>
         <field name="res_model">account.bank.statement</field>
         <field name="view_mode">form</field>
         <field name="view_id"

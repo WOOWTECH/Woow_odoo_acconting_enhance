@@ -17,6 +17,7 @@
 <!--Action Account Report General Ledger-->
     <record id="action_account_general_ledger_menu" model="ir.actions.act_window">
         <field name="name">General Ledger</field>
+        <field name="path">general-ledger</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">account.report.general.ledger</field>
         <field name="view_mode">form</field>

@@ -13,6 +13,7 @@
 <!--Action Kit Account Tax Report-->
     <record id="action_account_tax_report" model="ir.actions.act_window">
         <field name="name">Tax Reports</field>
+        <field name="path">tax-reports</field>
         <field name="res_model">kit.account.tax.report</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">form</field>

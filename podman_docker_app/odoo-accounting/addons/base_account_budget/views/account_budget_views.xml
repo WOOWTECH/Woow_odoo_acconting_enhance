@@ -27,6 +27,7 @@
 
     <record id="open_budget_post_form" model="ir.actions.act_window">
         <field name="name">Budgetary Positions</field>
+        <field name="path">budgetary-positions</field>
         <field name="res_model">account.budget.post</field>
         <field name="view_mode">list,kanban,form</field>
         <field name="view_id" ref="view_budget_post_tree"/>
@@ -253,6 +254,7 @@
 
     <record model="ir.actions.act_window" id="act_budget_view">
         <field name="name">Budgets</field>
+        <field name="path">budgets</field>
         <field name="res_model">budget.budget</field>
         <field name="view_mode">list,kanban,form</field>
         <field name="view_id" ref="budget_budget_view_tree"/>
@@ -340,6 +342,7 @@
 
     <record model="ir.actions.act_window" id="act_budget_lines_view">
         <field name="name">Budgets</field>
+        <field name="path">budget-lines</field>
         <field name="res_model">budget.lines</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_budget_line_tree"/>

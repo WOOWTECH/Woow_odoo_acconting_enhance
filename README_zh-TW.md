@@ -274,11 +274,11 @@ podman-compose up -d
 </p>
 完整的日記帳分錄管理，含完整稽核軌跡與多幣別支援。
 
-### 銀行對帳
+### 銀行對帳單
 <p align="center">
-  <img src="docs/screenshots/bank_reconciliation.png" alt="銀行對帳" width="720"/>
+  <img src="docs/screenshots/bank_statements.png" alt="銀行對帳單" width="720"/>
 </p>
-進階銀行對帳，搭配基於 OWL 的自訂 Widget 實現高效對帳。
+銀行對帳單管理，支援匯入功能與交易配對，實現高效對帳。
 
 ### 財務報表
 <p align="center">

@@ -203,6 +203,7 @@
     <record id="action_bank_statement_line_form_bank_reconcile_widget"
             model="ir.actions.act_window">
         <field name="name">Add a Transaction</field>
+        <field name="path">bank-transactions</field>
         <field name="res_model">account.bank.statement.line</field>
         <field name="view_mode">form</field>
         <field name="view_id"

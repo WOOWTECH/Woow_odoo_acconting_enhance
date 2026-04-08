@@ -37,6 +37,7 @@
 <!--Action Cash Flow Report-->
     <record id="action_cash_flow_report" model="ir.actions.act_window">
         <field name="name">Cash Flow Statement</field>
+        <field name="path">cash-flow</field>
         <field name="res_model">cash.flow.report</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">form</field>

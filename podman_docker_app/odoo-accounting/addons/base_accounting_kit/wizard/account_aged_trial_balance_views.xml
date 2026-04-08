@@ -23,6 +23,7 @@
 <!--Action Account Aged Trial Balance-->
     <record id="action_account_aged_balance_view" model="ir.actions.act_window">
         <field name="name">Aged Partner Balance</field>
+        <field name="path">aged-partner-balance</field>
         <field name="res_model">account.aged.trial.balance</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">list,form</field>

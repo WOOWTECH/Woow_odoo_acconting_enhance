@@ -59,6 +59,7 @@
 <!--Asset Report Action-->
     <record  id="action_asset_asset_report" model="ir.actions.act_window">
         <field name="name">Assets Analysis</field>
+        <field name="path">assets-analysis</field>
         <field name="res_model">asset.asset.report</field>
         <field name="view_mode">graph,pivot</field>
         <field name="search_view_id" ref="asset_asset_report_view_search"/>

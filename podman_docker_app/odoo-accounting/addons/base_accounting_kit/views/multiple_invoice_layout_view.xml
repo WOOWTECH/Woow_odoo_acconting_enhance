@@ -34,6 +34,7 @@
     <record id="action_multiple_invoice_layout_configurator" model="ir.actions.act_window">
         <field name="type">ir.actions.act_window</field>
         <field name="name">Configure Copy layout</field>
+        <field name="path">invoice-layout</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="res_model">multiple.invoice.layout</field>

@@ -325,11 +325,11 @@ Create and monitor budgets with planned vs actual amount tracking across analyti
 </p>
 Comprehensive journal entry management with full audit trail and multi-currency support.
 
-### Bank Reconciliation
+### Bank Statements
 <p align="center">
-  <img src="docs/screenshots/bank_reconciliation.png" alt="Bank Reconciliation" width="720"/>
+  <img src="docs/screenshots/bank_statements.png" alt="Bank Statements" width="720"/>
 </p>
-Advanced bank reconciliation with custom OWL-based widgets for efficient statement matching.
+Bank statement management with import capabilities and transaction matching for efficient reconciliation.
 
 ### Financial Reports
 <p align="center">

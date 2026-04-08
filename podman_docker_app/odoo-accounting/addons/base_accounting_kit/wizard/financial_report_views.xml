@@ -31,6 +31,7 @@
 <!--    Action for profit and loss    -->
     <record id="action_profit_and_loss_report" model="ir.actions.act_window">
         <field name="name">Profit and Loss</field>
+        <field name="path">profit-and-loss</field>
         <field name="res_model">financial.report</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">form</field>
@@ -42,6 +43,7 @@
     <!--    Action for balance sheet    -->
     <record id="action_balance_sheet_report" model="ir.actions.act_window">
         <field name="name">Balance Sheet</field>
+        <field name="path">balance-sheet</field>
         <field name="res_model">financial.report</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">form</field>

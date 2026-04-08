@@ -16,6 +16,7 @@
 <!--Action Account Balance Report-->
     <record id="action_account_balance_menu" model="ir.actions.act_window">
         <field name="name">Trial Balance</field>
+        <field name="path">trial-balance</field>
         <field name="res_model">account.balance.report</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">form</field>

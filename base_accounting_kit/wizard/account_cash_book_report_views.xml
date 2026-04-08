@@ -30,6 +30,7 @@
 <!--Action Cash Book Report-->
     <record id="action_account_cash_book_view" model="ir.actions.act_window">
         <field name="name">Cash Book Report</field>
+        <field name="path">cash-book</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">account.cash.book.report</field>
         <field name="view_id" ref="account_cash_book_report_view_form"/>

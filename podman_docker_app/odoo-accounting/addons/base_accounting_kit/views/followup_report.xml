@@ -100,6 +100,7 @@
 <!--Action follow-up report  -->
     <record id="action_view_list_customer_statements" model="ir.actions.act_window">
         <field name="name">Follow-up Reports</field>
+        <field name="path">followup-reports</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">list,form</field>
         <field name="view_ids" eval="[(5, 0, 0),
