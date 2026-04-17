@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"Language: zh_CN\n"
+"Language: zh_TW\n"
 "X-Generator: Poedit 2.2\n"
 
 #. module: base_account_budget
@@ -25,10 +25,10 @@ msgid ""
 "                financial accounts and/or analytic accounts (that may represent\n"
 "                projects, departments, categories of products, etc.)"
 msgstr ""
-"预算是对公司收入和/或支出的预测\n"
-"预计在未来一段时间内。预算是在某些时间定义的\n"
-"金融账户和/或分析账户（可能代表\n"
-"项目、部门、产品类别等）"
+"預算是對公司收入和/或支出的預測\n"
+"預計在未來一段時間內。預算是在某些時間定義的\n"
+"財務帳戶和/或分析帳戶（可能代表\n"
+"專案、部門、產品類別等）"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_budget_post__account_ids
@@ -39,28 +39,28 @@ msgstr "科目"
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__percentage
 msgid "Achievement"
-msgstr "达成"
+msgstr "達成"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_needaction
 msgid "Action Needed"
-msgstr "需要采取的行动"
+msgstr "需要採取的行動"
 
 #. module: base_account_budget
 #: model:ir.model,name:base_account_budget.model_account_analytic_account
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__analytic_account_id
 msgid "Analytic Account"
-msgstr "辅助核算"
+msgstr "輔助核算"
 
 #. module: base_account_budget
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 msgid "Approve"
-msgstr "批准"
+msgstr "核准"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_attachment_count
 msgid "Attachment Count"
-msgstr "附件数量"
+msgstr "附件數量"
 
 #. module: base_account_budget
 #: model:ir.model,name:base_account_budget.model_budget_budget
@@ -68,17 +68,17 @@ msgstr "附件数量"
 #: model_terms:ir.ui.view,arch_db:base_account_budget.budget_budget_view_tree
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 msgid "Budget"
-msgstr "预算"
+msgstr "預算"
 
 #. module: base_account_budget
 #: model_terms:ir.ui.view,arch_db:base_account_budget.view_account_analytic_account_form_inherit_budget
 msgid "Budget Items"
-msgstr "预算项目"
+msgstr "預算專案"
 
 #. module: base_account_budget
 #: model:ir.model,name:base_account_budget.model_budget_lines
 msgid "Budget Line"
-msgstr "预算明细"
+msgstr "預算明細"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_analytic_account__budget_line
@@ -89,13 +89,13 @@ msgstr "预算明细"
 #: model_terms:ir.ui.view,arch_db:base_account_budget.view_budget_line_search
 #: model_terms:ir.ui.view,arch_db:base_account_budget.view_budget_line_tree
 msgid "Budget Lines"
-msgstr "预算明细"
+msgstr "預算明細"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__name
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 msgid "Budget Name"
-msgstr "预算名称"
+msgstr "預算名稱"
 
 #. module: base_account_budget
 #: model:ir.model,name:base_account_budget.model_account_budget_post
@@ -104,13 +104,13 @@ msgstr "预算名称"
 #: model_terms:ir.ui.view,arch_db:base_account_budget.view_budget_post_search
 #: model_terms:ir.ui.view,arch_db:base_account_budget.view_budget_post_tree
 msgid "Budgetary Position"
-msgstr "预算状况"
+msgstr "預算狀況"
 
 #. module: base_account_budget
 #: model:ir.actions.act_window,name:base_account_budget.open_budget_post_form
 #: model:ir.ui.menu,name:base_account_budget.menu_budget_post_form
 msgid "Budgetary Positions"
-msgstr "预算状况"
+msgstr "預算狀況"
 
 #. module: base_account_budget
 #: model:ir.actions.act_window,name:base_account_budget.act_budget_lines_view
@@ -118,7 +118,7 @@ msgstr "预算状况"
 #: model:ir.ui.menu,name:base_account_budget.menu_act_budget_view
 #: model:ir.ui.menu,name:base_account_budget.menu_act_crossovered_budget_lines_view
 msgid "Budgets"
-msgstr "预算"
+msgstr "預算"
 
 #. module: base_account_budget
 #: model_terms:ir.actions.act_window,help:base_account_budget.act_budget_view
@@ -129,15 +129,15 @@ msgid ""
 "                analytic account and monitor its evolution based on the actuals\n"
 "                realised during that period."
 msgstr ""
-"通过跟踪资金流向，您可能会减少\n"
-"可能会超支，更可能满足您的财务要求\n"
-"目标。通过详细说明每个月的预期收入来预测预算\n"
-"分析帐户并根据实际情况监控调整以达到预算目的。"
+"透過追蹤資金流向，您可能會減少\n"
+"可能會超支，更可能滿足您的財務要求\n"
+"目標。透過詳細說明每個月的預期收入來預測預算\n"
+"分析帳戶並根據實際情況監控調整以達到預算目的。"
 
 #. module: base_account_budget
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 msgid "Cancel Budget"
-msgstr "取消预算"
+msgstr "取消預算"
 
 #. module: base_account_budget
 #: model:ir.model.fields.selection,name:base_account_budget.selection__budget_budget__state__cancel
@@ -147,7 +147,7 @@ msgstr "已取消"
 #. module: base_account_budget
 #: model_terms:ir.actions.act_window,help:base_account_budget.act_budget_view
 msgid "Click to create a new budget."
-msgstr "单击以创建新预算"
+msgstr "按一下以建立新預算"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_budget_post__company_id
@@ -159,26 +159,26 @@ msgstr "公司"
 #. module: base_account_budget
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 msgid "Confirm"
-msgstr "审核"
+msgstr "審核"
 
 #. module: base_account_budget
 #: model:ir.model.fields.selection,name:base_account_budget.selection__budget_budget__state__confirm
 msgid "Confirmed"
-msgstr "已审核"
+msgstr "已審核"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_budget_post__create_uid
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__create_uid
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__create_uid
 msgid "Created by"
-msgstr "创建人"
+msgstr "建立者"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_budget_post__create_date
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__create_date
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__create_date
 msgid "Created on"
-msgstr "创建于"
+msgstr "建立於"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_analytic_account__display_name
@@ -186,7 +186,7 @@ msgstr "创建于"
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__display_name
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__display_name
 msgid "Display Name"
-msgstr "显示名称"
+msgstr "顯示名稱"
 
 #. module: base_account_budget
 #: model:ir.model.fields.selection,name:base_account_budget.selection__budget_budget__state__done
@@ -203,27 +203,27 @@ msgstr "草稿"
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__date_to
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__date_to
 msgid "End Date"
-msgstr "结束时间"
+msgstr "結束日期"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_follower_ids
 msgid "Followers"
-msgstr "相关人员"
+msgstr "關注者"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_channel_ids
 msgid "Followers (Channels)"
-msgstr "相关人员(频道)"
+msgstr "關注者(頻道)"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_partner_ids
 msgid "Followers (Partners)"
-msgstr "相关人员(业务伙伴)"
+msgstr "關注者(業務夥伴)"
 
 #. module: base_account_budget
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 msgid "From"
-msgstr "来自"
+msgstr "來自"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_analytic_account__id
@@ -237,18 +237,18 @@ msgstr "ID"
 #: model:ir.model.fields,help:base_account_budget.field_budget_budget__message_needaction
 #: model:ir.model.fields,help:base_account_budget.field_budget_budget__message_unread
 msgid "If checked, new messages require your attention."
-msgstr "确认后, 将会提示消息。"
+msgstr "確認後，將會提示訊息。"
 
 #. module: base_account_budget
 #: model:ir.model.fields,help:base_account_budget.field_budget_budget__message_has_error
 #: model:ir.model.fields,help:base_account_budget.field_budget_budget__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr "如果勾选此项， 某些消息将会产生传递错误。"
+msgstr "如果勾選此項，某些訊息將會產生傳遞錯誤。"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_is_follower
 msgid "Is Follower"
-msgstr "是否相关人员"
+msgstr "是否為關注者"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_analytic_account____last_update
@@ -256,21 +256,21 @@ msgstr "是否相关人员"
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget____last_update
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines____last_update
 msgid "Last Modified on"
-msgstr "最后修改日"
+msgstr "最後修改日"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_budget_post__write_uid
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__write_uid
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__write_uid
 msgid "Last Updated by"
-msgstr "最后更新人"
+msgstr "最後更新者"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_budget_post__write_date
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__write_date
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__write_date
 msgid "Last Updated on"
-msgstr "最后更新日期"
+msgstr "最後更新日期"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_main_attachment_id
@@ -280,42 +280,42 @@ msgstr "主要附件"
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_has_error
 msgid "Message Delivery error"
-msgstr "消息传递错误"
+msgstr "訊息傳遞錯誤"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_ids
 msgid "Messages"
-msgstr "消息"
+msgstr "訊息"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_account_budget_post__name
 msgid "Name"
-msgstr "名称"
+msgstr "名稱"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_needaction_counter
 msgid "Number of Actions"
-msgstr "执行次数"
+msgstr "執行次數"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_has_error_counter
 msgid "Number of errors"
-msgstr "错误数"
+msgstr "錯誤數"
 
 #. module: base_account_budget
 #: model:ir.model.fields,help:base_account_budget.field_budget_budget__message_needaction_counter
 msgid "Number of messages which requires an action"
-msgstr "需要处理的消息数量"
+msgstr "需要處理的訊息數量"
 
 #. module: base_account_budget
 #: model:ir.model.fields,help:base_account_budget.field_budget_budget__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr "发送错误的消息数量"
+msgstr "傳送錯誤的訊息數量"
 
 #. module: base_account_budget
 #: model:ir.model.fields,help:base_account_budget.field_budget_budget__message_unread_counter
 msgid "Number of unread messages"
-msgstr "未读消息数"
+msgstr "未讀訊息數"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__paid_date
@@ -325,59 +325,59 @@ msgstr "付款日期"
 #. module: base_account_budget
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 msgid "Period"
-msgstr "期间"
+msgstr "期間"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__planned_amount
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 msgid "Planned Amount"
-msgstr "预算金额"
+msgstr "預算金額"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__practical_amount
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 #: model_terms:ir.ui.view,arch_db:base_account_budget.view_account_analytic_account_form_inherit_budget
 msgid "Practical Amount"
-msgstr "实际金额"
+msgstr "實際金額"
 
 #. module: base_account_budget
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 msgid "Reset to Draft"
-msgstr "重置为草稿"
+msgstr "重設為草稿"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__creating_user_id
 msgid "Responsible"
-msgstr "负责人"
+msgstr "負責人"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr "短信发送错误"
+msgstr "簡訊傳送錯誤"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__date_from
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__date_from
 msgid "Start Date"
-msgstr "开始日期"
+msgstr "開始日期"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__state
 msgid "Status"
-msgstr "状态"
+msgstr "狀態"
 
 #. module: base_account_budget
 #: code:addons/base_account_budget/models/account_budget.py:0
 #, python-format
 msgid "The budget must have at least one account."
-msgstr "此预算必须至少需要有一个账户"
+msgstr "此預算必須至少需要有一個帳戶"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_lines__theoretical_amount
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
 #: model_terms:ir.ui.view,arch_db:base_account_budget.view_account_analytic_account_form_inherit_budget
 msgid "Theoretical Amount"
-msgstr "理论金额"
+msgstr "理論金額"
 
 #. module: base_account_budget
 #: model_terms:ir.ui.view,arch_db:base_account_budget.crossovered_budget_view_form
@@ -387,24 +387,24 @@ msgstr "按"
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_unread
 msgid "Unread Messages"
-msgstr "未读邮件"
+msgstr "未讀訊息"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__message_unread_counter
 msgid "Unread Messages Counter"
-msgstr "未读邮件计数器"
+msgstr "未讀訊息計數器"
 
 #. module: base_account_budget
 #: model:ir.model.fields.selection,name:base_account_budget.selection__budget_budget__state__validate
 msgid "Validated"
-msgstr "已验证"
+msgstr "已驗證"
 
 #. module: base_account_budget
 #: model:ir.model.fields,field_description:base_account_budget.field_budget_budget__website_message_ids
 msgid "Website Messages"
-msgstr "网站消息"
+msgstr "網站訊息"
 
 #. module: base_account_budget
 #: model:ir.model.fields,help:base_account_budget.field_budget_budget__website_message_ids
 msgid "Website communication history"
-msgstr "网站浏览历史"
+msgstr "網站通訊記錄"
