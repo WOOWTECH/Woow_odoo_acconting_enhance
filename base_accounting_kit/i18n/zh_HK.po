@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-09 10:57+0000\n"
 "PO-Revision-Date: 2021-02-09 10:57+0000\n"
@@ -20,29 +20,29 @@ msgstr ""
 #: code:addons/language_translation/base_accounting_kit/models/account_asset.py:0
 #, python-format
 msgid " (copy)"
-msgstr ""
+msgstr " (副本)"
 
 #. module: base_accounting_kit
 #: code:addons/base_accounting_kit/models/account_asset.py:0
 #: code:addons/language_translation/base_accounting_kit/models/account_asset.py:0
 #, python-format
 msgid " (grouped)"
-msgstr ""
+msgstr " (已分組)"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,field_description:base_accounting_kit.field_account_asset_asset__entry_count
 msgid "# Asset Entries"
-msgstr ""
+msgstr "# 資產分錄"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,field_description:base_accounting_kit.field_asset_asset_report__depreciation_nbr
 msgid "# of Depreciation Lines"
-msgstr ""
+msgstr "# 折舊行數"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,field_description:base_accounting_kit.field_asset_asset_report__installment_nbr
 msgid "# of Installment Lines"
-msgstr ""
+msgstr "# 分期行數"
 
 #. module: base_accounting_kit
 #: code:addons/base_accounting_kit/models/credit_limit.py:0
@@ -51,7 +51,7 @@ msgstr ""
 #: code:addons/language_translation/base_accounting_kit/models/credit_limit.py:0
 #, python-format
 msgid "%s is in  Blocking Stage and has a due amount of %s %s to pay"
-msgstr ""
+msgstr "%s 處於凍結階段，有 %s %s 的到期應付金額"
 
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.report_bank_book
@@ -84,11 +84,13 @@ msgid ""
 "<br/>\n"
 "                                    <strong>Date to :</strong>"
 msgstr ""
+"<br/>\n"
+"                                    <strong>截止日期：</strong>"
 
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.view_account_followup_followup_kanban
 msgid "<i class=\"fa fa-building\" role=\"img\" aria-label=\"Enterprise\"/>"
-msgstr ""
+msgstr "<i class=\"fa fa-building\" role=\"img\" aria-label=\"企業版\"/>"
 
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.report_financial
@@ -241,7 +243,7 @@ msgstr "对帐必须包含至少2条移动线。"
 msgid ""
 "A warning message will appear once the selected customer is crossed warning "
 "amount. Set its value to 0.00 to disable this feature"
-msgstr ""
+msgstr "當所選客戶超過警告金額時，將會出現警告信息。將其值設為 0.00 以停用此功能"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -374,13 +376,13 @@ msgstr "折旧分录中使用的帐户，用于减少资产价值。"
 msgid ""
 "Account used in the periodical entries, to record a part of the asset as "
 "expense."
-msgstr ""
+msgstr "用於定期分錄的科目，以將部分資產記錄為費用。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,help:base_accounting_kit.field_account_asset_category__account_asset_id
 msgid ""
 "Account used to record the purchase of the asset at its original price."
-msgstr ""
+msgstr "用於以原價記錄資產購入的科目。"
 
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.res_config_settings_view_accounting_kit
@@ -533,7 +535,7 @@ msgstr "所有帐户"
 msgid ""
 "All invoices and payments have been matched, your accounts' balances are "
 "clean."
-msgstr ""
+msgstr "所有發票和付款已完成配對，您的帳戶餘額已清理完畢。"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -828,7 +830,7 @@ msgstr "取消"
 msgid ""
 "Cannot make sales once the selected customer is crossed blocking amount.Set "
 "its value to 0.00 to disable this feature"
-msgstr ""
+msgstr "當所選客戶超過凍結金額後，將無法進行銷售。將其值設為 0.00 以停用此功能"
 
 #. module: base_accounting_kit
 #: model:ir.ui.menu,name:base_accounting_kit.account_cash_book_menu
@@ -910,7 +912,7 @@ msgstr "检查您是否没有银行对帐单行"
 msgid ""
 "Check this if you want to automatically confirm the assets of this category "
 "when created by invoices."
-msgstr ""
+msgstr "如果您希望當此類別的資產由發票建立時自動確認，請勾選此項。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,help:base_accounting_kit.field_account_asset_category__group_entries
@@ -939,6 +941,9 @@ msgid ""
 "  * Linear: Calculated on basis of: Gross Value / Number of Depreciations\n"
 "  * Degressive: Calculated on basis of: Residual Value * Degressive Factor"
 msgstr ""
+"選擇用於計算折舊行金額的方法。\n"
+"  * 直線法：按以下基礎計算：總值 / 折舊次數\n"
+"  * 遞減法：按以下基礎計算：殘值 * 遞減因子"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,help:base_accounting_kit.field_account_asset_asset__method_time
@@ -948,18 +953,21 @@ msgid ""
 "  * Number of Entries: Fix the number of entries and the time between 2 depreciations.\n"
 "  * Ending Date: Choose the time between 2 depreciations and the date the depreciations won't go beyond."
 msgstr ""
+"選擇用於計算日期和分錄數目的方法。\n"
+"  * 分錄數目：固定分錄數目和兩次折舊之間的時間。\n"
+"  * 結束日期：選擇兩次折舊之間的時間以及折舊不會超過的日期。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,help:base_accounting_kit.field_asset_depreciation_confirmation_wizard__date
 msgid ""
 "Choose the period for which you want to automatically post the depreciation "
 "lines of running assets"
-msgstr ""
+msgstr "選擇您希望自動過帳進行中資產折舊行的期間"
 
 #. module: base_accounting_kit
 #: model_terms:ir.actions.act_window,help:base_accounting_kit.action_account_recurring_payments_view
 msgid "Click to create new recurring payment template"
-msgstr ""
+msgstr "點擊以建立新的定期付款範本"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -1181,7 +1189,7 @@ msgstr "信用额度"
 #: model:ir.model.fields,field_description:base_accounting_kit.field_res_partner__enable_credit_limit
 #: model:ir.model.fields,field_description:base_accounting_kit.field_res_users__enable_credit_limit
 msgid "Credit Limit Enabled"
-msgstr ""
+msgstr "已啟用信用額度"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,field_description:base_accounting_kit.field_account_asset_depreciation_line__depreciated_value
@@ -1796,7 +1804,7 @@ msgid ""
 "the sign of the balance; e.g.: Expense account. The same applies for "
 "accounts that are typically more credited than debited and that you would "
 "like to print as positive amounts in your reports; e.g.: Income account."
-msgstr ""
+msgstr "對於通常借方多於貸方的科目，如果您希望在報表中以負數金額打印，則應反轉餘額的正負號；例如：費用科目。同樣適用於通常貸方多於借方且您希望在報表中以正數金額打印的科目；例如：收入科目。"
 
 #. module: base_accounting_kit
 #: model_terms:ir.actions.act_window,help:base_accounting_kit.action_account_followup_definition_form
@@ -1805,6 +1813,9 @@ msgid ""
 "                possible to use print and e-mail templates to send specific messages to\n"
 "                the customer."
 msgstr ""
+"為每個步驟指定要採取的操作和延遲天數。可以\n"
+"                使用打印和電郵範本向客戶發送\n"
+"                特定的信息。"
 
 #. module: base_accounting_kit
 #: code:addons/base_accounting_kit/report/account_bank_book.py:0
@@ -1850,6 +1861,8 @@ msgid ""
 "From this report, you can have an overview on all depreciations. The\n"
 "            search bar can also be used to personalize your assets depreciation reporting."
 msgstr ""
+"透過此報表，您可以概覽所有折舊情況。\n"
+"            搜尋欄亦可用於自訂您的資產折舊報表。"
 
 #. module: base_accounting_kit
 #: model:ir.actions.act_window,name:base_accounting_kit.action_account_general_ledger_menu
@@ -1902,7 +1915,7 @@ msgstr "显示后续行列表时给出序列顺序。"
 #: code:addons/language_translation/base_accounting_kit/static/src/xml/payment_matching.xml:0
 #, python-format
 msgid "Go to bank statement(s)"
-msgstr ""
+msgstr "前往銀行對賬單"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -2035,7 +2048,7 @@ msgstr "如果选中，则某些邮件有传递错误。"
 msgid ""
 "If you selected date, this field allow you to add a row to display the "
 "amount of debit/credit/balance that precedes the filter you've set."
-msgstr ""
+msgstr "如果您選擇了日期，此欄位允許您新增一行，以顯示在您設定的篩選條件之前的借方/貸方/餘額金額。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields.selection,name:base_accounting_kit.selection__res_partner__followup_status__in_need_of_action
@@ -2050,7 +2063,7 @@ msgstr "需要采取行动"
 msgid ""
 "In order to print multiple checks at once, they must belong to the same bank"
 " journal."
-msgstr ""
+msgstr "如要同時打印多張支票，它們必須屬於同一銀行日記帳。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,field_description:base_accounting_kit.field_account_bank_book_report__initial_balance
@@ -2078,14 +2091,14 @@ msgid ""
 "Indicates that the first depreciation entry for this asset have to be done "
 "from the purchase date instead of the first January / Start date of fiscal "
 "year"
-msgstr ""
+msgstr "表示此資產的首次折舊分錄應從購買日期開始，而非從一月一日/財政年度開始日期起計"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,help:base_accounting_kit.field_account_asset_category__prorata
 msgid ""
 "Indicates that the first depreciation entry for this asset have to be done "
 "from the purchase date instead of the first of January"
-msgstr ""
+msgstr "表示此資產的首次折舊分錄應從購買日期開始，而非從一月一日起計"
 
 #. module: base_accounting_kit
 #: model:account.financial.report,name:base_accounting_kit.account_financial_report_investing_activity0
@@ -2133,7 +2146,7 @@ msgstr "是警告"
 msgid ""
 "It adds the currency column on report if the currency differs from the "
 "company currency."
-msgstr ""
+msgstr "如果貨幣與公司貨幣不同，將在報表中新增貨幣欄。"
 
 #. module: base_accounting_kit
 #: code:addons/base_accounting_kit/models/payment_matching.py:0
@@ -2141,7 +2154,7 @@ msgstr ""
 #, python-format
 msgid ""
 "It is mandatory to specify an account and a journal to create a write-off."
-msgstr ""
+msgstr "建立沖銷時必須指定一個科目和一本日記帳。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,help:base_accounting_kit.field_account_asset_asset__salvage_value
@@ -2151,7 +2164,7 @@ msgstr "这是您计划折旧的金额。"
 #. module: base_accounting_kit
 #: model:ir.model.fields.selection,name:base_accounting_kit.selection__account_financial_report__style_overwrite__5
 msgid "Italic Text (smaller)"
-msgstr ""
+msgstr "斜體文字（較小）"
 
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.payment_matching_view
@@ -2166,7 +2179,7 @@ msgstr "物品"
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.report_general_ledger
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.report_partnerledger
 msgid "JRNL"
-msgstr ""
+msgstr "日記帳"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -2446,7 +2459,7 @@ msgstr "装载更多"
 #: code:addons/language_translation/base_accounting_kit/static/src/xml/payment_matching.xml:0
 #, python-format
 msgid "Load more... ("
-msgstr ""
+msgstr "載入更多... ("
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,field_description:base_accounting_kit.field_account_lock_date__fiscalyear_lock_date
@@ -2641,7 +2654,7 @@ msgstr "没有后续发送！"
 msgid ""
 "No users, including Advisers, can edit accounts prior to and inclusive of "
 "this date. Use it for fiscal year locking for example."
-msgstr ""
+msgstr "所有用戶（包括顧問）均無法編輯此日期及之前的帳目。例如可用於鎖定財政年度。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields.selection,name:base_accounting_kit.selection__account_financial_report__style_overwrite__4
@@ -2712,7 +2725,7 @@ msgstr "传递错误的邮件数"
 #. module: base_accounting_kit
 #: model:ir.model.fields,help:base_accounting_kit.field_account_asset_asset__message_unread_counter
 msgid "Number of unread messages"
-msgstr ""
+msgstr "未讀信息數目"
 
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.view_account_asset_category_form
@@ -2725,7 +2738,7 @@ msgid ""
 "Only users with the 'Adviser' role can edit accounts prior to and inclusive "
 "of this date. Use it for period locking inside an open fiscal year, for "
 "example."
-msgstr ""
+msgstr "只有擁有「顧問」角色的用戶才能編輯此日期及之前的帳目。例如可用於在開放的財政年度內鎖定期間。"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -2756,7 +2769,7 @@ msgstr "过期的收据"
 #: model:account.payment.method,name:base_accounting_kit.account_payment_method_pdc_in
 #: model:account.payment.method,name:base_accounting_kit.account_payment_method_pdc_out
 msgid "PDC"
-msgstr ""
+msgstr "期票"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -2780,7 +2793,7 @@ msgstr "父母"
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.view_account_financial_report_search
 msgid "Parent Report"
-msgstr ""
+msgstr "上級報表"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -2804,7 +2817,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.report_journal_audit
 #, python-format
 msgid "Partner"
-msgstr ""
+msgstr "合作夥伴"
 
 #. module: base_accounting_kit
 #: model:ir.actions.act_window,name:base_accounting_kit.action_partner_leadger
@@ -2812,7 +2825,7 @@ msgstr ""
 #: model:ir.ui.menu,name:base_accounting_kit.menu_partner_ledger
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.report_partnerledger
 msgid "Partner Ledger"
-msgstr ""
+msgstr "合作夥伴分類帳"
 
 #. module: base_accounting_kit
 #: model:ir.model,name:base_accounting_kit.model_report_base_accounting_kit_report_partnerledger
@@ -2894,7 +2907,7 @@ msgstr "付款匹配"
 msgid ""
 "Payments to print as a checks must have 'Check' or 'PDC' selected as payment"
 " method and not have already been reconciled"
-msgstr ""
+msgstr "要打印為支票的付款必須選擇「支票」或「期票」作為付款方式，且尚未進行對賬"
 
 #. module: base_accounting_kit
 #: code:addons/base_accounting_kit/models/account_payment.py:0
@@ -2980,7 +2993,7 @@ msgstr "打印预编号的支票"
 msgid ""
 "Print Report with the currency column if the currency differs from the "
 "company currency."
-msgstr ""
+msgstr "如果貨幣與公司貨幣不同，打印帶有貨幣欄的報表。"
 
 #. module: base_accounting_kit
 #: model:ir.model,name:base_accounting_kit.model_product_template
@@ -3013,6 +3026,7 @@ msgid ""
 "Prorata temporis can be applied only for time method \"number of "
 "depreciations\"."
 msgstr ""
+"按比例分攤只能用於時間方法\"折舊次數\"。"
 
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.view_account_asset_category_search
@@ -3475,7 +3489,7 @@ msgid ""
 "The number of days after the due date of the invoice to wait before sending "
 "the reminder.  Could be negative if you want to send a polite alert "
 "beforehand."
-msgstr ""
+msgstr "在發票到期日後等待多少天才發送催款通知。如果您希望提前發送禮貌性提醒，可以設為負數。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,help:base_accounting_kit.field_account_asset_asset__method_number
@@ -3490,7 +3504,7 @@ msgstr "折旧资产所需的折旧数"
 msgid ""
 "The number of depreciations or the period length of your asset category "
 "cannot be null."
-msgstr ""
+msgstr "您的資產類別的折舊次數或期間長度不能為空。"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -3549,14 +3563,14 @@ msgstr "已超过该客户的<strong>警告限制</ strong>。"
 msgid ""
 "This depreciation is already linked to a journal entry! Please post or "
 "delete it."
-msgstr ""
+msgstr "此折舊已關聯至一筆日記帳分錄！請過帳或刪除它。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,help:base_accounting_kit.field_cash_flow_report__label_filter
 msgid ""
 "This label will be displayed on report to show the balance computed for the "
 "given comparison filter."
-msgstr ""
+msgstr "此標籤將顯示在報表中，以展示為指定比較篩選條件計算的餘額。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,help:base_accounting_kit.field_cash_flow_report__debit_credit
@@ -3565,7 +3579,7 @@ msgid ""
 "This option allows you to get more details about the way your balances are "
 "computed. Because it is space consuming, we do not allow to use it while "
 "doing a comparison."
-msgstr ""
+msgstr "此選項允許您獲取有關餘額計算方式的更多詳細資料。由於佔用較多空間，在進行比較時不允許使用此選項。"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -3575,7 +3589,7 @@ msgstr ""
 msgid ""
 "This page displays all the bank transactions that are to be reconciled and "
 "provides with a neat interface to do so."
-msgstr ""
+msgstr "此頁面顯示所有待對賬的銀行交易，並提供簡潔的介面進行操作。"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -3591,6 +3605,8 @@ msgid ""
 "This wizard will post installment/depreciation lines for the selected month.<br/>\n"
 "                        This will generate journal entries for all related installment lines on this period of asset/revenue recognition as well."
 msgstr ""
+"此精靈將為所選月份過帳分期/折舊行。<br/>\n"
+"                        同時亦會為此期間所有相關的資產/收入確認分期行生成日記帳分錄。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,field_description:base_accounting_kit.field_account_asset_asset__method_time
@@ -3634,6 +3650,14 @@ msgid ""
 "                        same customer, the actions of the most\n"
 "                        overdue invoice will be executed."
 msgstr ""
+"為提醒客戶支付發票，您可以\n"
+"                        根據客戶逾期的嚴重程度定義不同的\n"
+"                        操作。這些操作被組合成跟進級別，\n"
+"                        當發票到期日超過一定\n"
+"                        天數時觸發。如果同一客戶有其他\n"
+"                        逾期發票，將執行最嚴重\n"
+"                        逾期發票的\n"
+"                        操作。"
 
 #. module: base_accounting_kit
 #. openerp-web
@@ -3850,6 +3874,9 @@ msgid ""
 "If the asset is confirmed, the status goes in 'Running' and the depreciation lines can be posted in the accounting.\n"
 "You can manually close an asset when the depreciation is over. If the last line of depreciation is posted, the asset automatically goes in that status."
 msgstr ""
+"當資產建立時，狀態為「草稿」。\n"
+"如果資產已確認，狀態會變為「進行中」，折舊行可以過帳到會計。\n"
+"您可以在折舊完成後手動關閉資產。如果最後一行折舊已過帳，資產會自動進入該狀態。"
 
 #. module: base_accounting_kit
 #: model:ir.model.fields,field_description:base_accounting_kit.field_account_print_journal__amount_currency
@@ -3917,7 +3944,7 @@ msgstr "年"
 #. module: base_accounting_kit
 #: model:ir.model.fields.selection,name:base_accounting_kit.selection__account_recurring_payments__recurring_period__years
 msgid "Years"
-msgstr ""
+msgstr "年"
 
 #. module: base_accounting_kit
 #: code:addons/base_accounting_kit/wizard/account_lock_date.py:0
@@ -3932,7 +3959,7 @@ msgid ""
 "You can set up here the format you want this record to be displayed. If you "
 "leave the automatic formatting, it will be computed based on the financial "
 "reports hierarchy (auto-computed field 'level')."
-msgstr ""
+msgstr "您可以在此設定此記錄的顯示格式。如果保留自動格式化，它將根據財務報表層級結構計算（自動計算的欄位「級別」）。"
 
 #. module: base_accounting_kit
 #: code:addons/base_accounting_kit/models/account_asset.py:0
@@ -4011,7 +4038,7 @@ msgstr "和后续客户"
 #. module: base_accounting_kit
 #: model:ir.model,name:base_accounting_kit.model_asset_depreciation_confirmation_wizard
 msgid "asset.depreciation.confirmation.wizard"
-msgstr ""
+msgstr "asset.depreciation.confirmation.wizard"
 
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.view_account_followup_followup_line_form
@@ -4044,7 +4071,7 @@ msgstr "已自动对帐。"
 #. module: base_accounting_kit
 #: model:ir.model.fields,field_description:base_accounting_kit.field_account_recurring_entries_line__tmpl_id
 msgid "id"
-msgstr ""
+msgstr "id"
 
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.asset_modify_form
@@ -4074,7 +4101,7 @@ msgstr "对帐模型"
 #: code:addons/language_translation/base_accounting_kit/static/src/xml/payment_matching.xml:0
 #, python-format
 msgid "remaining)"
-msgstr ""
+msgstr "剩餘)"
 
 #. module: base_accounting_kit
 #: model_terms:ir.ui.view,arch_db:base_accounting_kit.customer_statements_form_view
